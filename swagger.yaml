@@ -1,0 +1,16 @@
+paths:
+    /healthcheck:
+        get:
+            operationId: HealthCheck
+    /worlds/{id}:
+        delete:
+            operationId: deleteWorldHandler
+            responses:
+                "200":
+                    description: ""
+                "400":
+                    $ref: '#/responses/ErrorResponse'
+                "500":
+                    $ref: '#/responses/ErrorResponse'
+            summary: Delete a world.
+swagger: "2.0"
