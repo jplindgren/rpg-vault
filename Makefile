@@ -79,14 +79,10 @@ production/deploy/api:
 	rsync -P ./bin/linux_amd64/api rpg_manager@${production_host_ip}:~
 	rsync -P ./remote/production/api.service rpg_manager@${production_host_ip}:~
 	rsync -P ./remote/production/Caddyfile rpg_manager@${production_host_ip}:~
-	ssh -t rpg_manager@${production_host_ip} \
-		cd \
-		&& ls \
-		&& sudo mv ./api.service /etc/systemd/system/ \
+	ssh -t rpg_manager@${production_host_ip} '\
+		sudo mv ~/api.service /etc/systemd/system/ \
 		&& sudo systemctl enable api \
 		&& sudo systemctl restart api \
 		&& sudo mv ~/Caddyfile /etc/caddy/ \
-		&& sudo systemctl reload caddy
-
-
-
+		&& sudo systemctl reload caddy \
+	'
