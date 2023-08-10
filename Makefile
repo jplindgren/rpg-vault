@@ -1,5 +1,5 @@
 # Include variables from the .envrc file
-include .envrc
+-include .envrc
 
 # ==================================================================================== #
 # DEVELOPMENT
